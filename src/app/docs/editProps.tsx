@@ -192,7 +192,7 @@ export default function EditProps() {
                 </Md2PosterHeader>
                 <Md2PosterContent>{mdString}</Md2PosterContent>
                 <Md2PosterFooter className="text-center">
-                  <img src="/logo.png" alt="logo" className="inline-block mr-2 w-5" />
+                  <img src="/qrcode.png" alt="logo" className="inline-block mr-2 w-5" />
                   Powered by markdown-to-image-serve.jcommon.top
                 </Md2PosterFooter>
               </Md2Poster>

@@ -25,8 +25,8 @@ export default function PosterView() {
   // 需要根据url参数，作为mdString 的默认值
   const searchParams = useSearchParams()
   const mdString = decodeURIComponent(searchParams?.get('content')|| defaultContentMd) 
-  const headerString = decodeURIComponent(searchParams?.get('header') || 'News')
-  const footerString = decodeURIComponent(searchParams?.get('footer') || 'Powered by Powered by markdown-to-image-serve.jcommon.top')
+  const headerString = decodeURIComponent(searchParams?.get('header') || '上岸学堂AI学习刷题')
+  const footerString = decodeURIComponent(searchParams?.get('footer') || '微信长按识别二维码学习更多优质上岸内容')
 
   return (
     <div className="poster-content" style={{display: "inline-block"}}>
@@ -37,7 +37,7 @@ export default function PosterView() {
               </Md2PosterHeader>
               <Md2PosterContent>{mdString}</Md2PosterContent>
               <Md2PosterFooter className='text-center'>
-                <Image src="/logo.png" alt="logo" width={20} height={20} className='inline-block mr-2' />
+                <Image src="/qrcode.png" alt="logo" width={80} height={80} className='inline-block mr-2' />
                 {footerString}
               </Md2PosterFooter>
             </Md2Poster>

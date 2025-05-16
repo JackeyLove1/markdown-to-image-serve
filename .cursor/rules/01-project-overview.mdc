@@ -1,0 +1,24 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Overview
+
+This is a service that converts Markdown content to beautiful images with API support, offering customizable themes and layouts.
+
+## Key Files and Directories
+
+- [package.json](mdc:package.json) - Package configuration and dependencies
+- [src/pages/api/generatePoster.ts](mdc:src/pages/api/generatePoster.ts) - Main API for generating posters from markdown
+- [src/pages/api/generatePosterImage.ts](mdc:src/pages/api/generatePosterImage.ts) - API for generating images directly
+- [src/app/page.tsx](mdc:src/app/page.tsx) - Main application page
+- [src/app/layout.tsx](mdc:src/app/layout.tsx) - Main application layout
+
+## Tech Stack
+
+- Next.js for the frontend and API routes
+- Puppeteer for rendering markdown to images
+- Tailwind CSS for styling
+- Docker for deployment
+

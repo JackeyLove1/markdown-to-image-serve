@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Markdown Processing and Image Generation
+
+This application converts Markdown content to HTML and images using a combination of technologies:
+
+## Core Process Flow
+
+1. Markdown is submitted via API
+2. The markdown is converted to HTML with proper styling
+3. Puppeteer captures a screenshot of the rendered HTML
+
+## Key Components
+
+### API Endpoints
+
+- [src/pages/api/generatePoster.ts](mdc:src/pages/api/generatePoster.ts) - Converts markdown to HTML
+- [src/pages/api/generatePosterImage.ts](mdc:src/pages/api/generatePosterImage.ts) - Converts markdown to image
+
+### Puppeteer Implementation
+
+The application uses Puppeteer to render the HTML and capture screenshots. The key configuration:
+
+- Browser setup occurs in the API endpoints
+- Special handling for deployment environments (serverless, Docker)
+- Chrome path configuration based on environment variables
+
+### Theming
+
+The application supports custom themes:
+
+- Light and dark themes are available by default
+- Themes are applied to the rendered markdown
+- Custom CSS is used to style the markdown content
+
+### Image Optimization
+
+- Images are served with appropriate cache headers
+- Size optimization occurs during the rendering process
+

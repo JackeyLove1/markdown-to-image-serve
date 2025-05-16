@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# API Documentation
+
+## Generate Poster API
+
+The `generatePoster` endpoint creates a HTML poster from markdown content.
+
+**Endpoint:** [src/pages/api/generatePoster.ts](mdc:src/pages/api/generatePoster.ts)
+
+**Method:** POST to `/api/generatePoster`
+
+**Request Body:**
+```typescript
+{
+  markdown: string;       // Markdown content
+  header?: string;        // Optional: header text
+  footer?: string;        // Optional: footer text
+  theme?: 'light' | 'dark'; // Optional: theme
+  width?: number;         // Optional: image width
+  height?: number;        // Optional: image height
+}
+```
+
+## Generate Poster Image API
+
+The `generatePosterImage` endpoint creates an image from markdown content.
+
+**Endpoint:** [src/pages/api/generatePosterImage.ts](mdc:src/pages/api/generatePosterImage.ts)
+
+**Method:** POST to `/api/generatePosterImage`
+
+**Request Body:**
+```typescript
+{
+  markdown: string;      // Markdown content
+  theme?: string;        // Optional: theme
+  width?: number;        // Optional: image width
+}
+```
+

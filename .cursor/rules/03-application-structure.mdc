@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Application Structure
+
+This project uses Next.js with a hybrid of the App Router and Pages Router approaches.
+
+## Main Components
+
+- [src/app/layout.tsx](mdc:src/app/layout.tsx) - Root layout component with global providers
+- [src/app/page.tsx](mdc:src/app/page.tsx) - Main landing page
+- [src/app/poster](mdc:src/app/poster) - Poster preview pages
+- [src/app/docs](mdc:src/app/docs) - Documentation pages
+
+## API Routes
+
+API routes are implemented using the Pages Router in:
+
+- [src/pages/api/generatePoster.ts](mdc:src/pages/api/generatePoster.ts) - Generate HTML poster
+- [src/pages/api/generatePosterImage.ts](mdc:src/pages/api/generatePosterImage.ts) - Generate image from markdown
+- [src/pages/api/getImage.js](mdc:src/pages/api/getImage.js) - Get stored images
+
+## Markdown Processing
+
+Markdown processing logic is located in the markdown directory:
+
+- [src/markdown](mdc:src/markdown) - Markdown processing utilities
+
+## Components
+
+Reusable UI components are located in:
+
+- [src/components](mdc:src/components) - UI components used throughout the application
+

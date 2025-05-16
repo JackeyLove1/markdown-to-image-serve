@@ -1,0 +1,48 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Deployment Guide
+
+This application can be deployed in several ways:
+
+## Docker Deployment (Recommended)
+
+The application includes Docker configuration for easy deployment:
+
+- [Dockerfile](mdc:Dockerfile) - Docker build configuration
+- [docker-compose.yml](mdc:docker-compose.yml) - Docker Compose configuration
+
+To deploy with Docker Compose:
+```bash
+docker-compose up -d
+```
+
+## Platform-Specific Notes
+
+For different architectures:
+
+1. x86 architectures (Linux, Windows, Mac Intel): Set platform to linux/x86 in docker-compose.yml
+2. Apple Silicon: Set platform to linux/amd64 in docker-compose.yml
+
+## Manual Deployment
+
+To deploy manually:
+
+1. Build the application:
+```bash
+npm run build
+```
+
+2. Start the production server:
+```bash
+npm start
+```
+
+## Environment Configuration
+
+Configure the following environment variables:
+- `NEXT_PUBLIC_BASE_URL` - Base URL for the application
+- `CHROME_PATH` - Path to Chrome/Chromium executable (if not using Docker)
+
