@@ -8,8 +8,8 @@ import crypto from 'crypto';
 
 
 // Browser Pool Configuration
-const POOL_MAX = Number(process.env.CHROME_POOL_MAX || '5');
-const POOL_MIN = Number(process.env.CHROME_POOL_MIN || '1');
+const POOL_MAX = Number(process.env.CHROME_POOL_MAX || '4');
+const POOL_MIN = Number(process.env.CHROME_POOL_MIN || '2');
 const ACQUIRE_TIMEOUT_MILLIS = 30000;
 const MAX_USES_PER_BROWSER = 50;
 
@@ -155,12 +155,14 @@ export default async function handler(
     return res.status(401).json({ error: "Unauthorized: Missing or invalid token" });
   }
 
-  const { markdown, header = "", footer = "" } = req.body;
+  const { markdown, header = "", footer = "", theme = "SpringGradientWave" } = req.body;
 
-  console.log("markdown==========>\n", markdown);
+  console.log("markdown==========>\\n", markdown);
+  console.log("theme============>\\n", theme);
 
-  // Generate MD5 hash for markdown content only (ignoring header and footer)
-  const contentHash = generateMD5(markdown);
+  // Generate MD5 hash from all content that affects the poster
+  const fullContent = JSON.stringify({ markdown, header, footer, theme });
+  const contentHash = generateMD5(fullContent);
 
   // Check if cached image exists
   const cachedImage = await getCachedImage(contentHash);
@@ -234,7 +236,7 @@ export default async function handler(
       markdown
     )}&header=${encodeURIComponent(header)}&footer=${encodeURIComponent(
       footer
-    )}`;
+    )}&theme=${encodeURIComponent(theme)}`;
     const fullUrl = `${baseUrl}${url}`;
     // console.log("fullUrl==========>", fullUrl);
 

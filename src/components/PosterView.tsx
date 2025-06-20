@@ -21,17 +21,20 @@ const defaultContentMd = `# AI的发展
 ![AI发展](https://images.unsplash.com/photo-1677442136019-21780ecad995)
 `
 
+type IThemeType = 'blue' | 'pink' | 'purple' | 'green' | 'yellow' | 'gray' | 'red' | 'indigo' | 'SpringGradientWave';
+
 export default function PosterView() {
   // 需要根据url参数，作为mdString 的默认值
   const searchParams = useSearchParams()
   const mdString = decodeURIComponent(searchParams?.get('content')|| defaultContentMd) 
   const headerString = decodeURIComponent(searchParams?.get('header') || '上岸学堂AI学习刷题')
   const footerString = decodeURIComponent(searchParams?.get('footer') || '微信长按识别二维码学习更多优质上岸内容')
+  const theme = (searchParams?.get('theme') || 'SpringGradientWave') as IThemeType
 
   return (
     <div className="poster-content" style={{display: "inline-block"}}>
           {/* Preview */}
-            <Md2Poster theme="SpringGradientWave" >
+            <Md2Poster theme={theme} >
               <Md2PosterHeader  className="flex justify-center items-center px-4 font-medium text-lg">
                 <span>{new Date().toISOString().slice(0, 10)} {headerString}</span>
               </Md2PosterHeader>

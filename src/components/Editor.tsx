@@ -33,6 +33,8 @@ const defaultMd = `# AI晨报 - 4月29日
 
 export default function Editor() {
   const [mdString, setMdString] = useState(defaultMd)
+  const [selectedTheme, setSelectedTheme] = useState<any>('SpringGradientWave')
+  
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMdString(e.target.value)
   }
@@ -51,17 +53,44 @@ export default function Editor() {
   const copySuccessCallback = () => {
     console.log('copySuccessCallback')
   }
+
+  // Theme selection handler
+  const handleThemeChange = (theme: string) => {
+    setSelectedTheme(theme)
+  }
+
   return (
     <ScrollArea className="h-[96vh] w-full border-2 border-gray-900 rounded-xl my-4 relative">
       <div className="flex flex-row h-full ">
         <div className="w-1/2">
           {/* Edit */}
+          <div className="p-4 border-b">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              选择主题:
+            </label>
+            <select 
+              value={selectedTheme} 
+              onChange={(e) => handleThemeChange(e.target.value)}
+              aria-label="选择主题"
+              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            >
+              <option value="blue">Blue</option>
+              <option value="pink">Pink</option>
+              <option value="purple">Purple</option>
+              <option value="green">Green</option>
+              <option value="yellow">Yellow</option>
+              <option value="gray">Gray</option>
+              <option value="red">Red</option>
+              <option value="indigo">Indigo</option>
+              <option value="SpringGradientWave">Spring Gradient Wave</option>
+            </select>
+          </div>
           <Textarea placeholder="markdown" onChange={handleChange} defaultValue={mdString} />
         </div>
         <div className="w-1/2 mx-auto flex justify-center p-4 ">
           {/* Preview */}
           <div className="flex flex-col w-fit">
-            <Md2Poster theme="SpringGradientWave" copySuccessCallback={copySuccessCallback} ref={markdownRef}>
+            <Md2Poster theme={selectedTheme} copySuccessCallback={copySuccessCallback} ref={markdownRef}>
               <Md2PosterHeader className="flex justify-center items-center px-4 font-medium text-lg">
                 <span>{new Date().toISOString().slice(0, 10)}</span>
               </Md2PosterHeader>
