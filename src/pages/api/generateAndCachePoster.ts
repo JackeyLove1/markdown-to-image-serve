@@ -34,12 +34,7 @@ const browserPool = GenericPool.createPool<BrowserInstance>({
         "--font-render-hinting=none",
       ],
       defaultViewport: chromium.defaultViewport,
-      executablePath:
-        process.env.NODE_ENV === "production"
-          ? await chromium.executablePath(
-            `https://github.com/Sparticuz/chromium/releases/download/v123.0.1/chromium-v123.0.1-pack.tar`
-          )
-          : process.env.CHROME_PATH,
+      executablePath: process.env.CHROME_PATH,
       headless: true,
       ignoreHTTPSErrors: true,
     });
