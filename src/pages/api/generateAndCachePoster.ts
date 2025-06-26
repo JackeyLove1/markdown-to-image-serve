@@ -138,8 +138,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "只支持 POST 请求" });
+  if (req.method !== "POST" && req.method !== "GET" && req.method !== "OPTIONS") {
+    return res.status(405).json({ error: "只支持 POST、GET、OPTIONS 请求" });
   }
 
   // Check for shangan token in headers
@@ -177,13 +177,13 @@ export default async function handler(
   let page: any | null = null;
   try {
     // 修改字体加载部分, windows下不需要开启，linux服务器下需要开启
-    // try {
-    //   await chromium.font(path.join(process.cwd(), 'public', 'fonts', 'SimSun.ttf'));
-    // } catch (error: any) {
-    //   if (error.code !== 'EEXIST') {
-    //     throw error;
-    //   }
-    // }
+    try {
+      await chromium.font(path.join(process.cwd(), 'public', 'fonts', 'SimSun.ttf'));
+    } catch (error: any) {
+      if (error.code !== 'EEXIST') {
+        throw error;
+      }
+    }
 
     browserInstance = await getBrowserFromPool();
     const browser = browserInstance.browser;
